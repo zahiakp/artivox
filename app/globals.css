@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Oswald:wght@200..700&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Space+Grotesk:wght@300..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.font-playfair {
+  font-family: "Playfair", serif;
+}
+.jersey-15 {
+  font-family: "Jersey 15", sans-serif;
+}
+
+.meow-script-regular {
+  font-family: "Meow Script", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.barlow-condensed{
+  font-family: "Barlow Condensed";
+}
+.oswald{
+  font-family: "Oswald", sans-serif;
+}
+.font-roboto{
+  font-family: "Roboto", serif;
+}
+.exo-2{
+  font-family: "Exo 2", serif;
+}
+.font-outfit{
+  font-family: "Outfit", serif;
+}
+/* Custom font-face declarations */
+@font-face {
+  font-family: "FSL-Jazri-line";
+  src: url("/fonts/FKL-Jazri.2 line.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FSL-Jazri-light";
+  src: url("/fonts/FKL-Jazri.2-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Fractul-Light";
+  src: url("/fonts/Fractul-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Usage example */
+.font-Jazri-line {
+  font-family: "FSL-Jazri-line", sans-serif;
+}
+.font-Jazri-light {
+  font-family: "FSL-Jazri-light", sans-serif;
+}
+.font-Fractul {
+  font-family: "Fractul-Light", serif;
+}
+
+.font-bebasNeue {
+  font-family: "Bebas Neue", serif;
+}
+.font-msMadi {
+  font-family: "Ms Madi", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  background-color: #fff;
+}
+.font-Plus-Jakarta-Sans{
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.font-public-sans{
+  font-family: "Public Sans", sans-serif;
+}
+.font-barlow{
+  font-family: "Barlow", sans-serif;
+}
+.w-input {
+  @apply py-3 px-4 outline-primary-500;
+}
+
+.urdu{
+  font-family: 'Noto Nastaliq Urdu', serif;
+}
+.arabic{
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+.malayalam{
+  font-family: 'Noto Sans Malayalam', sans-serif;
+}
+
+
+.font-Lobster {
+  font-family: "Lobster", sans-serif;
+}
+.border-bottom {
+  border-bottom: 1px;
+  border-color: #fff;
+}
+input,
+textarea {
+  @apply rounded-lg border focus:outline;
+}
+input[type="checkbox"] {
+  outline: none;
+}
+input[type="number"] {
+  /* Firefox */
+  -moz-appearance: textfield;
+
+  /* Chrome, Safari, Edge, Opera */
+  appearance: textfield;
+}
+
+/* Remove the up and down arrows in WebKit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.hintcol {
+  height: 35px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.hintcol:hover {
+  height: 140px;
+}
+.form-not input:focus {
+  outline: none;
+  border: 1px solid #000;
+}
+.tool-bar {
+  width: 100px !important;
+}
+.width-fix {
+  width: 300px !important;
+}
+.Toastify__toast {
+  border-radius: 12px !important;
+}
+@media (max-width: 767px) {
+  aside {
+    display: none; /* Hide the sidebar on smaller screens */
+  }
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  aside {
+    display: block; /* Show the sidebar on larger screens */
+  }
+}
+
+.width-input {
+  max-width: 70px !important;
+}
+img[alt="Info icon"] {
+  display: none !important;
+}
+.font-teko {
+  font-family: "Teko", sans-serif;
+}
+
+.font-oswald{
+  font-family: 'Oswald', sans-serif;
+}
+
+
+
+.abq-card{
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+
+.abq-card-p{
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    /* padding: 24px; */
+}
+
+
+/* -----------------paginator */
+
+
+.p-paginator{
+  @apply w-full py-5 rounded-lg gap-1
+}
+.p-paginator-page{
+  @apply hover:bg-zinc-100 border border-gray-200 duration-300 rounded-lg
+}
+.p-paginator-pages{
+  @apply gap-1 flex
+}
+.p-paginator-first, .p-paginator-prev, .p-paginator-next, .p-paginator-last{
+  @apply bg-zinc-100 hover:bg-zinc-200  duration-300 rounded-lg
+}
+.p-paginator .p-paginator-pages .p-highlight {
+  @apply bg-primary-600 font-bold text-white
+}
+
+
+.toast-custom {
+  background: #2B3F5C !important;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+
+
+
+/* ------------------tabview-------------------- */
+.p-tabview-nav-link{
+  @apply w-full bg-transparent flex-grow flex p-5
+}
+.p-tabview-selected{
+  @apply bg-primary-50 flex text-primary-600
+}
+.p-tabview-ink-bar{
+  @apply bg-primary-600 w-full
+}
+.p-tabview-selected{
+  display: flex !important;
+}
+.p-unselectable-text{
+  display: flex !important;
+}
+.p-tabview-nav{
+  display: grid; grid-template-columns: auto auto auto;
+}
+
+.p-inputswitch {
+  @apply border-2 border-primary-600
+}
+.p-inputswitch-checked{
+  @apply bg-primary-600
+}
+
+.p-tabview{
+  @apply w-[95%] max-w-[1200px] mx-auto
+}

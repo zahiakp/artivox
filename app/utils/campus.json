@@ -1,0 +1,282 @@
+[
+  {
+    "categories": [
+      "senior"
+    ],
+    "strength": "37",
+    "name": "Sayyid Madani Collage Ullal",
+    "jamiaNo": "JM007",
+    "password": "rlf@37",
+    "id": "0FvYUux0KFBEdtSyGOBg"
+  },
+  {
+    "categories": [
+      "minor"
+    ],
+    "jamiaNo": "JMS002",
+    "name": "CM Markaz Mambeethi",
+    "strength": "23",
+    "password": "rlf@24",
+    "id": "8OfrKfWkodso0DMizVlx"
+  },
+  {
+    "password": "rlf@53",
+    "strength": "58",
+    "categories": [
+      "senior"
+    ],
+    "name": "Markaz Garden Poonoor B",
+    "jamiaNo": "JM001B",
+    "id": "BGw9hdNN3mOgWAuxPbCs"
+  },
+  {
+    "strength": "26",
+    "password": "rlf@27",
+    "name": "Markaz Al Munavara Manappally",
+    "categories": [
+      "premier",
+      "subjunior"
+    ],
+    "jamiaNo": "JM014",
+    "id": "BHBLoK98wPgQMho1JQsp"
+  },
+  {
+    "jamiaNo": "JMS001",
+    "password": "rlf@24",
+    "strength": "24",
+    "name": "Hasaniyya Aykarappadi",
+    "categories": [
+      "minor"
+    ],
+    "id": "C3mVLDia87nCi6BCK6pa"
+  },
+  {
+    "categories": [
+      "junior",
+      "senior"
+    ],
+    "name": "Markaz Garden Poonoor",
+    "password": "rlf@226",
+    "jamiaNo": "JM001",
+    "strength": "59",
+    "id": "CJWrX6qhKegdRWiUTWKE"
+  },
+  {
+    "strength": "20",
+    "name": "Hasanul Basari Muttam",
+    "password": "rlf@23",
+    "jamiaNo": "JMS005",
+    "categories": [
+      "minor"
+    ],
+    "id": "CYIxlOoewJFXQmmEJPrt"
+  },
+  {
+    "strength": "26",
+    "categories": [
+      "subjunior"
+    ],
+    "name": "Tharbiyath Kodiyathur",
+    "jamiaNo": "JM018",
+    "password": "rlf@26",
+    "id": "Dq82ZnLxpjBTHCLCYc8B"
+  },
+  {
+    "name": "Darul Hidaya Collage Engappuzha ",
+    "jamiaNo": "JM004",
+    "password": "rlf@99",
+    "strength": "99",
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "id": "Fwjxu3m1rOvzP0dwln1J"
+  },
+  {
+    "categories": [
+      "subjunior"
+    ],
+    "password": "rlf@14",
+    "jamiaNo": "JM020",
+    "strength": "14",
+    "name": "Al Irshad Academy Thechiyad",
+    "id": "Jnp0SkpUl3W77azpV965"
+  },
+  {
+    "strength": "39",
+    "password": "rlf@39",
+    "jamiaNo": "JM011",
+    "name": "Markasunnajath Ekarool",
+    "categories": [
+      "premier",
+      "subjunior"
+    ],
+    "id": "N7NtIyUDTWPkzx7E6AiQ"
+  },
+  {
+    "name": "Baithul Izza Narikkuni",
+    "jamiaNo": "JM008",
+    "strength": "103",
+    "password": "rlf@103",
+    "categories": [
+      "minor",
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "id": "NkTjdwvjhxGf21b4px8o"
+  },
+  {
+    "name": "Darul Hikam Campus Panavally",
+    "password": "rlf@9",
+    "jamiaNo": "JM013",
+    "categories": [
+      "subjunior"
+    ],
+    "strength": "9",
+    "id": "PsPg8LhCM0yhCFCoR3tG"
+  },
+  {
+    "jamiaNo": "JM010",
+    "strength": "11",
+    "name": "Markaz Al Bilal Pattambi",
+    "password": "rlf@11",
+    "categories": [
+      "subjunior"
+    ],
+    "id": "XM73djj67fI8yL0k9Ct9"
+  },
+  {
+    "strength": "54",
+    "password": "rlf@54",
+    "categories": [
+      "junior"
+    ],
+    "jamiaNo": "JM005",
+    "name": "Shuhada Edu Campus Omanoor",
+    "id": "YPojrfLdE68bxLkwnpFA"
+  },
+  {
+    "jamiaNo": "JM001A",
+    "name": "Markaz Garden Poonoor A",
+    "password": "rlf@55",
+    "strength": "53",
+    "categories": [
+      "senior"
+    ],
+    "id": "aAkhC0Uxh4I5Wf48jtQQ"
+  },
+  {
+    "password": "rlf@93",
+    "strength": "87",
+    "name": "Dalaelul Khairath Kakkidippuram",
+    "jamiaNo": "JM009",
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "id": "cRm6FJauIeLTsjZJ9a5J"
+  },
+  {
+    "jamiaNo": "test",
+    "strength": "20",
+    "password": "test",
+    "categories": [
+      "minor"
+    ],
+    "name": "test",
+    "id": "jQ9UhqSdNfNgQ7EWeZtD"
+  },
+  {
+    "name": "Erthunnabavi Campuses",
+    "strength": "121",
+    "password": "rlf@121",
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "jamiaNo": "JMI001",
+    "id": "jiXDd73Pu1crij5Im5Cq"
+  },
+  {
+    "jamiaNo": "JM002",
+    "password": "rlf@125",
+    "name": "Imam Rabbani Collage Kanthapuram",
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "strength": "122",
+    "id": "jucKtqrnBVrCVi3nM7XN"
+  },
+  {
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "strength": "91",
+    "password": "rlf@93",
+    "jamiaNo": "JM003",
+    "name": "Imam Shafi Collage Busthanabad",
+    "id": "l7uRnPjN5SqJpe6DZMz6"
+  },
+  {
+    "jamiaNo": "JM006",
+    "categories": [
+      "premier",
+      "subjunior",
+      "junior"
+    ],
+    "name": "ISRA Vatanappally",
+    "strength": "68",
+    "password": "rlf@68",
+    "id": "lKw6oHQpFBjWIlThdcBv"
+  },
+  {
+    "password": "rlf@49",
+    "name": "Jamalullaily Campus Chelari",
+    "strength": "45",
+    "categories": [
+      "premier",
+      "subjunior"
+    ],
+    "jamiaNo": "JM012",
+    "id": "sucmH5U8wmbHgRcSzWNX"
+  },
+  {
+    "strength": "28",
+    "name": "Kamaliyya Campus Mayyil",
+    "jamiaNo": "JM022",
+    "categories": [
+      "premier",
+      "subjunior"
+    ],
+    "password": "rlf@28",
+    "id": "v1Z28WcATdTJ25JCCcrq"
+  },
+  {
+    "password": "rlf@15",
+    "jamiaNo": "JMS004",
+    "name": "Dinnoorain Naduvannoor",
+    "strength": "13",
+    "categories": [
+      "minor"
+    ],
+    "id": "v7Fe3EfYOigRH8lvFe5C"
+  },
+  {
+    "strength": "15",
+    "jamiaNo": "JM021",
+    "categories": [
+      "premier"
+    ],
+    "name": "Markaz Chenganasseri",
+    "password": "rlf@15",
+    "id": "wxZ8ZfvI7dhsrgx2Isx3"
+  }
+]
