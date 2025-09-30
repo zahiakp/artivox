@@ -1,5 +1,6 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { DocHeader } from "../data/branding";
 
 export const generatePDF = 
   (result: any[],programs:any
@@ -13,7 +14,7 @@ export const generatePDF =
   const pageWidth = doc.internal.pageSize.width;
 
   // --- Path to your template background image ---
-  const templateBackground = "/cog site.png"; // **Action Required:** Replace with your actual image path or Base64 string
+  const templateBackground = DocHeader || ""; // **Action Required:** Replace with your actual image path or Base64 string
 
   // --- Add Template as Background to All Pages ---
   const addTemplateAsBackground = () => {
