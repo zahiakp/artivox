@@ -1,5 +1,6 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { DocHeader, DocHeaderSec } from "../../app/data/branding";
 
 export const generatePDF = (
   participants: any[],
@@ -14,8 +15,8 @@ export const generatePDF = (
   const pageHeight = doc.internal.pageSize.height;
   const pageWidth = doc.internal.pageSize.width;
 
-  const templateBackground = "/cog site.png";   // first page
-  const backgroundFrom2 = "/cog-footer.png";    // second+ pages
+  const templateBackground = DocHeader || "";   // first page
+  const backgroundFrom2 = DocHeaderSec || "";    // second+ pages
 
   const addTemplateAsBackground = (pageNum: number) => {
     const bg = pageNum === 1 ? templateBackground : backgroundFrom2;
