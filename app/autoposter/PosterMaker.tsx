@@ -17,14 +17,14 @@ import SearchBar from "./SearchBar";
 import PosterCanvas from "../../components/common/PosterCanvas";
 import { BsStars } from "react-icons/bs";
 import ResultCard from "../../components/common/ResultCard";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 function PosterMaker() {
-    const [cookies] = useCookies(["access"]);
+    const [cookies] = useCookies([`${brandName}-access`]);
     // DEBUG: Safely access nested properties from cookies.
     // This prevents "cannot read properties of undefined" if `cookies.access` doesn't exist.
-    const userRole = cookies?.access?.role;
-    const campusId = cookies?.access?.campusId;
+    const userRole = cookies[`${brandName}-access`]?.role;
+    const campusId = cookies[`${brandName}-access`]?.campusId;
 
     const [datas, setDatas] = useState<any[]>([]);
     const [loading, setLoading] = useState(true); // Set initial loading to true

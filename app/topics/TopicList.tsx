@@ -15,6 +15,7 @@ import { ViewTopic } from "../../components/common/ViewTopic";
 import { getFirstLastInitials } from "../../components/common/NameShorter";
 import LDRloader from "../../components/common/LDRloader";
 import { showMessage } from "../../components/common/CusToast";
+import { brandName } from "../data/branding";
 
 // --- Type Definitions ---
 interface Program {
@@ -149,11 +150,11 @@ const topicReducer = (state: State, action: Action): State => {
 // --- Main Component ---
 function TopicList() {
     const [state, dispatch] = useReducer(topicReducer, initialState);
-    const [cookies] = useCookies(["access"]);
+    const [cookies] = useCookies([`${brandName}-access`]);
     const debouncedSearchQuery = useDebounce(state.filters.searchQuery, 500);
 
-    const userRole = useMemo(() => cookies?.access?.role, [cookies]);
-    const campusId = useMemo(() => cookies?.access?.campusId, [cookies]);
+    const userRole = useMemo(() => cookies[`${brandName}-access`]?.role, [cookies]);
+    const campusId = useMemo(() => cookies[`${brandName}-access`]?.campusId, [cookies]);
 
     const fetchPrograms = useCallback(async () => {
         dispatch({ type: 'FETCH_INIT' });

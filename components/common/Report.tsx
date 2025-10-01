@@ -11,11 +11,12 @@ import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { ChangeParticipantStatus } from "../../app/programs/func";
 import { assignCode, getTopic } from "../../app/utils/assignCode";
+import { brandName } from "../../app/data/branding";
 
 function Report({ close, data ,fetch}:{close:any, data:any,fetch?:any}) {
   const router = useRouter()
-  const [cookies] = useCookies(["access"]);
-const [userRole, setUserRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+const [userRole, setUserRole] = useState(cookies[`${brandName}-access`]?.role);
   const proEndpoint = "programs";
   const partEndpoint = "participants";
   const [loading, setLoading] = useState(false);

@@ -10,11 +10,12 @@ import { AnimatedCircularProgressBar } from '../../components/ui/AnimatedCircula
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
 import { FaCheckCircle } from 'react-icons/fa';
 import { IoSearchOutline } from 'react-icons/io5';
+import { brandName } from '../data/branding';
 
 function StudentList() {
-  const [cookies] = useCookies(["access"]);
-    const [role] = useState(cookies?.access?.role);
-    const {jamiaNo} = cookies?.access||'';
+  const [cookies] = useCookies([`${brandName}-access`]);
+    const [role] = useState(cookies[`${brandName}-access`]?.role);
+    const {jamiaNo} = cookies[`${brandName}-access`]||'';
     const [students, setStudents] = useState<any>(null);
     const [edit, setEdit] = useState<any>(null);
     const [add, setAdd] = useState<any>(null);
@@ -68,7 +69,7 @@ function StudentList() {
         limit: rows.toString(),
         search: searchQuery || "",
       }).toString();
-  console.log(cookies.access?.groupId);
+  console.log(cookies[`${brandName}-access`]?.groupId);
   
       // try {
       //   let StudentsData;

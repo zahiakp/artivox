@@ -8,12 +8,13 @@ import { assignCode } from "../../app/utils/assignCode";
 import { ongoingUpdate } from "../../app/utils/ongoingUpdate";
 import { useCookies } from "react-cookie";
 import { showMessage } from "./CusToast";
+import { brandName } from "../../app/data/branding";
 
 function GetAward({ result, setLoading, loading }:{result:any, setLoading:any, loading:any}) {
-  const [cookies] = useCookies(["access"]);
+  const [cookies] = useCookies([`${brandName}-access`]);
   const [role, setRole] = useState();
   useEffect(() => {
-    setRole(cookies?.access?.role);
+    setRole(cookies[`${brandName}-access`]?.role);
   }, []);
   return (
     <div className="flex flex-col gap-3 w-full">

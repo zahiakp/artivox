@@ -16,13 +16,14 @@ import { getFirstLastInitials } from "../../components/common/NameShorter";
 import FinalizeResult from "../../components/common/FinalizeResult";
 import { ProResult } from "./func";
 import ResultCard from "../../components/common/ResultCard";
+import { brandName } from "../data/branding";
 
 
 function Finalize() {
     const [add, setAdd] = useState<any>(null);
     const [confirm, setConfirm] = useState<any>(null);
-    const [cookies] = useCookies(["access"]);
-    const { role, campusId } = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const { role, campusId } = cookies[`${brandName}-access`] || {};
     const [ongoing, setOngoing] = useState<any[]>([]);
     const [totalRecords, setTotalRecords] = useState<number>(0);
     const [reporting, setReporting] = useState([]);

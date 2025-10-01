@@ -18,11 +18,11 @@ import { brandLogo, brandName } from "../../app/data/branding";
 const SideMenu = () => {
   const pathname = usePathname();
   const [logOut, setLogOut] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies(["access"]);
+  const [cookies, setCookie, removeCookie] = useCookies([`${brandName}-access`]);
   const [role, setRole] = useState();
 
   useEffect(() => {
-    setRole(cookies?.access?.role);
+    setRole(cookies[`${brandName}-access`].role);
   }, []);
 
   const menuItems = [
@@ -153,7 +153,7 @@ const SideMenu = () => {
 
     {/* Mobile Top Header */}
     <div className="md:hidden fixed top-0 left-0 right-0 bg-white shadow z-10 h-16 flex items-center justify-between px-4">
-      <b className="text-xl text-primary-800">Workspace</b>
+      <b className="text-xl text-primary-800">{brandName || "Event Pro"}</b>
      <button onClick={()=>setLogOut(true)} type="button" className="text-gray-700 hover:text-red-600 p-3 rounded-lg bg-gray-100 hover:bg-red-100 transition-colors duration-200">
                  <TbLogout />
                </button>
@@ -165,12 +165,12 @@ const SideMenu = () => {
       {menuItems
         .filter((item: any) =>
           (role === "admin" && item.adminOnly) ||
-          (role === "team" && item.campusOnly) ||
-          (role === "judge" && item.judgeOnly) ||
-          (role === "result" && item.resultOnly) ||
-          (role === "announce" && item.announceOnly) ||
-          (role === "report" && item.regOnly) ||
-          (role === "award" && item.awardOnly)
+              (role === "campus" && item.campusOnly) ||
+              (role === "judge" && item.judgeOnly) ||
+              (role === "result" && item.resultOnly) ||
+              (role === "announce" && item.announceOnly) ||
+              (role === "report" && item.regOnly) ||
+              (role === "award" && item.awardOnly)
         )
         .slice(0, 4) // limit to first 4 for mobile layout
         .map((item: any, index: number) => (

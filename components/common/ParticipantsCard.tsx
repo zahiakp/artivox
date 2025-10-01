@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 // Assuming these are the correct paths to your components
 import Modal from "./Modal"; 
 import DeleteParticipant from "../../app/programs/DeletePart";
+import { brandName } from "../../app/data/branding";
 
 // --- TYPE DEFINITIONS ---
 
@@ -55,14 +56,14 @@ const ParticipantsCard: React.FC<any> = ({
   participants = [], 
   fetchPrograms 
 }) => {
-  const [cookies] = useCookies(["access"]);
+  const [cookies] = useCookies([`${brandName}-access`]);
   // Explicitly type userRole state
   const [userRole, setUserRole] = useState<'admin' | 'campus' | undefined>();
   
   // Set user role from cookies once on component mount
   useEffect(() => {
-    if (cookies?.access?.role) {
-      setUserRole(cookies.access.role);
+    if (cookies[`${brandName}-access`]?.role) {
+      setUserRole(cookies[`${brandName}-access`].role);
     }
   }, [cookies]);
 console.log('participants',participants);

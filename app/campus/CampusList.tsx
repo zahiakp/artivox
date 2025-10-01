@@ -12,10 +12,11 @@ import { FaUsers } from "react-icons/fa";
 import IconNotesEdit from "../../components/icon/icon-notes-edit";
 import { getCampuseswithPagination } from "./func";
 import { SideBar } from "./SideBar";
+import { brandName } from "../data/branding";
 
 function CampusList() {
-  const [cookies] = useCookies(["access"]);
-  const [role] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const [role] = useState(cookies[`${brandName}-access`]?.role);
   const [students, setStudents] = useState<any>(null);
   const [campuses, setCampuses] = useState<any>("loading");
   const [overView, setOverView] = useState<any>("loading");

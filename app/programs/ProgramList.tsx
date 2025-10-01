@@ -33,7 +33,7 @@ import { getFirstLastInitials } from "../../components/common/NameShorter";
 import LDRloader from "../../components/common/LDRloader";
 import IconInfoHexagon from "../../components/icon/icon-info-hexagon";
 import CategoryBased from "./CatBased";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 function ProgramList() {
   const [add, setAdd] = useState(false);
@@ -42,9 +42,9 @@ function ProgramList() {
   const [assign, setAssign] = useState<any>();
   const [reassign, setReassign] = useState<any>();
   const [students, setStudents] = useState<any>([]);
-  const [cookies,setCookie] = useCookies(["access",'']);
-  const { role: Role, campusId: campus } = cookies.access || {};
-  const [userRole, setUserRole] = useState(cookies?.access?.role);
+  const [cookies,setCookie] = useCookies([`${brandName}-access`,'']);
+  const { role: Role, campusId: campus } = cookies[`${brandName}-access`] || {};
+  const [userRole, setUserRole] = useState(cookies[`${brandName}-access`]?.role);
   const [view, setView] = useState<any>();
   const [campuses, setTeames] = useState<any>([]);
   const [programList, setProgramList] = useState([]);
@@ -60,7 +60,7 @@ function ProgramList() {
   const proEndpoint = "programs";
   const partEndpoint ="participants";
 
-  const { role, categories } = cookies?.access || {};
+  const { role, categories } = cookies[`${brandName}-access`] || {};
 
       const fetchStudents = async () => {
         setLoading(true);
@@ -273,8 +273,8 @@ const statusOptions = [allProgramsOption, ...categoryOptions];
       console.error("Error fetching programs:", error);
     }
   };
-  const campCategories = cookies?.access?.categories
-  const campCategoriesVal = cookies?.access?.categories
+  const campCategories = cookies[`${brandName}-access`]?.categories
+  const campCategoriesVal = cookies[`${brandName}-access`]?.categories
 const statusTheme:any ={
   pending : "text-red-500",
   reporting : "text-primary-500",

@@ -12,7 +12,7 @@ function page() {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [cookies, setCookie, removeCookie] = useCookies(["access"]);
+  const [cookies, setCookie, removeCookie] = useCookies([`${brandName}-access`]);
   const [type,setType]=useState(false)
   const handleLogin = async (e:any) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ function page() {
   
      
       if (result.success) {
-        setCookie("access", result.data, { path: "/" });
+        setCookie(`${brandName}-access`, result.data, { path: "/" });
               router.push("/");
       } else {
         throw new Error(result.message);

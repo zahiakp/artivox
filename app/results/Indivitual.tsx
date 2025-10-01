@@ -7,7 +7,7 @@ import LDRloader from "../../components/common/LDRloader";
 import { WSelectAuto } from "../../components/common/Form";
 import { useFormik } from "formik";
 import { Select } from "antd";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 // Interface for individual program data
 interface IndividualProgram {
@@ -48,8 +48,8 @@ const getRankStyles = (rank: number) => {
 
 // The component is now correctly named and structured for Individual Points
 function IndividualPoint() {
-  const [cookies] = useCookies(["access"]);
-  const user = cookies?.access || {};
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const user = cookies[`${brandName}-access`] || {};
   
   const [individuals, setIndividuals] = useState<IndividualProgram[]>([]);
   const [loading, setLoading] = useState(true);

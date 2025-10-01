@@ -13,13 +13,14 @@ import IconMenuNotes from "../icon/menu/icon-menu-notes";
 import IconMenuForms from "../icon/menu/icon-menu-forms";
 import { IconCertificate, IconPlayCircle, IconResutAtom } from "../icon/icon-play-circle";
 import IconAirplay from "../icon/icon-airplay";
+import { brandName } from "../../app/data/branding";
 
 const Footer = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["access"]);
+  const [cookies, setCookie, removeCookie] = useCookies([`${brandName}-access`]);
   const [role, setRole] = useState();
 
   useEffect(() => {
-    setRole(cookies?.access?.role);
+    setRole(cookies[`${brandName}-access`]?.role);
   }, []);
 
   const menuItems = [
@@ -102,7 +103,7 @@ const Footer = () => {
       adminOnly: true,
       // zoneAdmin:true,
       resultOnly: true,
-      campusAdmin:cookies?.access?.campusId=='JM001',
+      campusAdmin:cookies[`${brandName}-access`]?.campusId=='JM001',
     },
     {
       path: "/award",

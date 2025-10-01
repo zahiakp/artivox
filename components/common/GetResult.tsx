@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Modal from "./Modal";
-import { IoMdAddCircle } from "react-icons/io";
-import ParticipantForm from "./ParticipantForm";
-import { TbUserScan } from "react-icons/tb";
-import CameraCapture from "./CameraCapture";
-import { assignCode } from "../../app/utils/assignCode";
-import { ongoingUpdate } from "../../app/utils/ongoingUpdate";
+import { useState } from "react";
 
 function GetResult({ result }:{result:any}) {
   const [loading, setLoading] = useState(false);

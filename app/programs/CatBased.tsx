@@ -35,6 +35,7 @@ import {
 } from "../programs/func";
 import { showMessage } from "../../components/common/CusToast";
 import { getAllStudentsByteamIdwithCat } from "../students/func";
+import { brandName } from "../data/branding";
 
 
 // --- TYPE DEFINITIONS ---
@@ -80,9 +81,9 @@ interface CategoryBasedProps {
 
 const CategoryBased: React.FC<CategoryBasedProps> = ({ category }) => {
     // --- STATE MANAGEMENT ---
-    const [cookies] = useCookies(["access"]);
-    const accessInfo: AccessCookie | undefined = cookies.access;
-    const { role: Role, campusId: campus } = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const accessInfo: AccessCookie | undefined = cookies[`${brandName}-access`];
+    const { role: Role, campusId: campus } = cookies[`${brandName}-access`] || {};
     // Data State
     const [programs, setPrograms] = useState<Program[]>([]);
     

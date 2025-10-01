@@ -16,11 +16,12 @@ import IconClipboardText from "../../components/icon/icon-clipboard-text";
 import Report from "../../components/common/Report";
 import { TbCircleLetterC } from "react-icons/tb";
 import { RxLetterCaseCapitalize } from "react-icons/rx";
+import { brandName } from "../data/branding";
 
 
 function Reporting() {
-    const [cookies] = useCookies(["access"]);
-    const { role, campusId } = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const { role, campusId } = cookies[`${brandName}-access`] || {};
     const [ongoing, setOngoing] = useState<any[]>([]);
     const [totalRecords, setTotalRecords] = useState<number>(0);
     const [page, setPage] = useState<number>(1);

@@ -20,12 +20,12 @@ import ResultCard from "../../components/common/ResultCard";
 import { ProResult } from "../judgement/func";
 import Overview from "./Overview";
 import CategoryDesignProvider from "../../components/common/CategoryDesign";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 // Main Component
 function AnnounceList() {
-  const [cookies] = useCookies(["access"]);
-  const user = cookies?.access || {};
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const user = cookies[`${brandName}-access`] || {};
 
   // Main status to switch between tabs
   const [status, setStatus] = useState<"program" | "campus" | "indivitual">("program");

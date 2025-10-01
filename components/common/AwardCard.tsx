@@ -7,13 +7,14 @@ import DeleteParticipant from "../../app/programs/DeletePart";
 import IconMaximizeSquare from "../icon/icon-maximize-square";
 import { showMessage } from "./CusToast";
 import { MarkAwarded } from "../../app/judgement/func";
+import { brandName } from "../../app/data/branding";
 
 function AwardCard({ close,program, fetchPrograms }: { close: any; program:any ,fetchPrograms:any }) {
-  const [cookies] = useCookies(["access"]);
-  const [role, setRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const [role, setRole] = useState(cookies[`${brandName}-access`]?.role);
   const router = useRouter();
-  const {jamiaNo} = cookies?.access
-  const campus = cookies.access?.campusId;
+  const {jamiaNo} = cookies[`${brandName}-access`]
+  const campus = cookies[`${brandName}-access`]?.campusId;
   const [loading, setLoading] = useState(false);
   const [deleteItem,setDeleteItem] = useState<any>()
   // const [students, setStudents] = useState<any>([]);
