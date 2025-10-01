@@ -5,11 +5,12 @@ import IconInfoHexagon from '../../components/icon/icon-info-hexagon';
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
 import { useCookies } from 'react-cookie';
 import { getStudentsByteamId } from './func';
+import { brandName } from '../data/branding';
 
 function Students({id}:{id:any}) {
     
-    const [cookies] = useCookies(["access"]);
-      const [role] = useState(cookies?.access?.role);
+    const [cookies] = useCookies([`${brandName}-access`]);
+      const [role] = useState(cookies[`${brandName}-access`]?.role);
       const [students, setStudents] = useState<any>(null);
       const [totalRecords, setTotalRecords] = useState<number>(0);
       const [page, setPage] = useState<number>(1);

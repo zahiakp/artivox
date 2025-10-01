@@ -4,7 +4,7 @@ import IconInfoHexagon from "../../components/icon/icon-info-hexagon";
 import { FaStar } from "react-icons/fa";
 import LDRloader from "../../components/common/LDRloader";
 import { getTeamPoint, getTeamPointCatBased } from "../programs/func";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 interface Program {
     id: string | number;
@@ -39,8 +39,8 @@ const getRankStyles = (rank: number) => {
 };
 
 function Group() {
-  const [cookies] = useCookies(["access"]);
-  const user = cookies?.access || {};
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const user = cookies[`${brandName}-access`] || {};
   const [groups, setGroups] = useState<Program[]>([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("all");

@@ -13,11 +13,12 @@ import { IoSearchOutline } from "react-icons/io5";
 import LDRloader from "../../components/common/LDRloader";
 import IconMenuElements from "../../components/icon/menu/icon-menu-elements";
 import { getFirstLastInitials } from "../../components/common/NameShorter";
+import { brandName } from "../data/branding";
 
 
 function OffStage() {
-    const [cookies] = useCookies(["access"]);
-    const { role, campusId } = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const { role, campusId } = cookies[`${brandName}-access`] || {};
     const [ongoing, setOngoing] = useState<any[]>([]);
     const [totalRecords, setTotalRecords] = useState<number>(0);
     const [page, setPage] = useState<number>(1);

@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
+import { brandName } from './app/data/branding'
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request:any) {
   const url = request.nextUrl
   const pathname= url.pathname
-  const access = request.cookies.has('access')
-  const cookie=request.cookies.get('access')
+  const access = request.cookies.has(`${brandName}-access`)
+  const cookie=request.cookies.get(`${brandName}-access`)
   if(cookie){
     var role = JSON.parse(cookie?.value).role
 

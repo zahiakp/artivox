@@ -14,6 +14,7 @@ import IconMaximizeSquare from "../../components/icon/icon-maximize-square";
 // --- Import API Functions ---
 import { getAwardDetails } from "../programs/func";
 import Overview from "../results/Overview";
+import { brandName } from "../data/branding";
 
 // --- Type Definitions ---
 
@@ -147,8 +148,8 @@ const ProgramTable = ({
 // --- Main Component ---
 
 function AwardList() {
-    const [cookies] = useCookies(["access"]);
-    const { role, campusId }: UserAccess = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const { role, campusId }: UserAccess = cookies[`${brandName}-access`] || {};
 
     const [programs, setPrograms] = useState<Program[]>([]);
     const [totalRecords, setTotalRecords] = useState<number>(0);

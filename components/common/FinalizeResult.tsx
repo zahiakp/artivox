@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { AssignOrder, getProgramsOrder, UpdateProgramStatus } from "../../app/programs/func";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { brandName } from "../../app/data/branding";
 function FinalizeResult({
   close,
   type,
@@ -14,8 +15,8 @@ function FinalizeResult({
   program: any; fetch:any
 }) {
   const router = useRouter();
-  const [cookies] = useCookies(["access"]);
-const [userRole, setUserRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+const [userRole, setUserRole] = useState(cookies[`${brandName}-access`]?.role);
   const proEndpoint = (userRole === "admin" || userRole === "judge") ? "programs" : (userRole === "zoneAdmin" || userRole === "zonecampus") ? "zoneprograms" :(userRole === "campusAdmin" || userRole === "Group") ? "campusprograms" : "";
   const resultEndpoint = (userRole === "admin" || userRole === "judge") ? "results" : (userRole === "zoneAdmin" || userRole === "zonecampus") ? "zoneresults" :(userRole === "campusAdmin" || userRole === "Group") ? "campusresults" : "";
   const [loading, setLoading] = useState(false);

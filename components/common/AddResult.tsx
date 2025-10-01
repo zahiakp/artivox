@@ -4,6 +4,7 @@ import { UpdateMark } from "../../app/programs/func";
 import { showMessage } from "./CusToast";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
+import { brandName } from "../../app/data/branding";
 
 function AddResult({
   close,
@@ -17,8 +18,8 @@ function AddResult({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const { program } = data;
-  const [cookies] = useCookies(["access"]);
-  const [role, setRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const [role, setRole] = useState(cookies[`${brandName}-access`]?.role);
   const endpoint =
     role === "admin" || role == "judge"
       ? "participants" : "";

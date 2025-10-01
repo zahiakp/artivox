@@ -13,6 +13,7 @@ import {
 import { showMessage } from "./CusToast";
 import { debounce } from "lodash";
 import { getStudentsByteamId, getStudentsByteamIdwithCat } from "../../app/students/func";
+import { brandName } from "../../app/data/branding";
 
 const getInitialParticipants = (assign: any, reassign: boolean) => {
   const out: any[] = [];
@@ -84,7 +85,7 @@ function AssignForm({
   reassign: any;
   fetchPrograms: any;
 }) {
-  const [cookies] = useCookies(["access", `${assign.category}`]);
+  const [cookies] = useCookies([`${brandName}-access`, `${assign.category}`]);
   const { role } = cookies.access;
   const router = useRouter();
   const campus = cookies.access?.campusId;

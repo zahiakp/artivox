@@ -13,7 +13,7 @@
 // function Form() {
 //   const router = useRouter();
 //   const [loading, setLoading] = useState(false);
-//   const [cookies, setCookie] = useCookies(["access"]);
+//   const [cookies, setCookie] = useCookies([`${brandName}-access`]);
 //   const [type, setType] = useState(false);
 
 //   const validationSchema = Yup.object().shape({
@@ -33,7 +33,7 @@
 //         if (resp.success) {
 //           console.log(resp.data);
           
-//           setCookie("access", resp.data.role, { path: "/" });
+//           setCookie(`${brandName}-access`, resp.data.role, { path: "/" });
 //           router.push("/");
 //         } else {
 //           showMessage(resp.message, "error");

@@ -8,11 +8,11 @@ import { addAccess, addTeam, editAccess, editTeam, getAccessbyJamiaNo } from "..
 import { WCheckbox, WFormInput } from "./Form";
 import { showMessage } from "./CusToast";
 import { useCookies } from "react-cookie";
-import { categoryMap } from "../../app/data/branding";
+import { brandName, categoryMap } from "../../app/data/branding";
 
 function AddCampus({ close, edit ,fetchCampuses}: { close: any; edit: any ,fetchCampuses:any}) {
-  const [cookies, setCookie, removeCookie] = useCookies(["access"]);
-  const [role, setRole] = useState(cookies?.access?.role);
+  const [cookies, setCookie, removeCookie] = useCookies([`${brandName}-access`]);
+  const [role, setRole] = useState(cookies[`${brandName}-access`]?.role);
 // useEffect(() => {
 //     setRole(cookies?.access?.role);
 //   }, []);

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { TbLogout } from "react-icons/tb";
 import Logout from "./Logout";
+import { brandName } from "../../app/data/branding";
 
 function FooterSide({setLogOut}:{setLogOut:any}) {
-  const [cookies] = useCookies(["access"]);
+  const [cookies] = useCookies([`${brandName}-access`]);
   const [name, setName] = useState();
   const [role, setRole] = useState();
   const [list, setList] = useState(false);
@@ -12,18 +13,18 @@ function FooterSide({setLogOut}:{setLogOut:any}) {
   const [jamiaNo, setJamiaNo] = useState();
   useEffect(() => {
     setName(
-      cookies.access?.role == "campus"
-        ? cookies.access?.name
-        : cookies?.access?.role == "admin"
-        ? cookies.access?.username
-        : cookies?.access?.role == "report"
+      cookies[`${brandName}-access`]?.role == "campus"
+        ? cookies[`${brandName}-access`]?.name
+        : cookies[`${brandName}-access`]?.role == "admin"
+        ? cookies[`${brandName}-access`]?.username
+        : cookies[`${brandName}-access`]?.role == "report"
         ? "Reporting Point"
-        : cookies?.access?.role == "judge"
+        : cookies[`${brandName}-access`]?.role == "judge"
         ? "Judgement"
-        : cookies?.access?.role == "announce" && "Announcement"
+        : cookies[`${brandName}-access`]?.role == "announce" && "Announcement"
     );
-    setJamiaNo(cookies.access?.jamiaNo);
-    setRole(cookies.access?.role);
+    setJamiaNo(cookies[`${brandName}-access`]?.jamiaNo);
+    setRole(cookies[`${brandName}-access`]?.role);
   }, []);
   return (
     <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">

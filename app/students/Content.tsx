@@ -21,13 +21,13 @@ import { showMessage } from "../../components/common/CusToast";
 import { MdOutlineAddCircle } from "react-icons/md";
 import AddStudent from "../../components/common/AddStudent";
 import { getStudentsByteamIdwithCat } from "./func";
-import { categoryMap } from "../data/branding";
+import { brandName, categoryMap } from "../data/branding";
 
 // --- Main Component ---
 function StudentsContent() {
     // --- State Management ---
-    const [cookies] = useCookies(["access"]);
-    const { campusId, categories, role } = cookies.access || {};
+    const [cookies] = useCookies([`${brandName}-access`]);
+    const { campusId, categories, role } = cookies[`${brandName}-access`] || {};
 
     // Modal and View States
     const [add, setAdd] = useState(false);

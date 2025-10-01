@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
 import { addProgram, editProgram } from "../../app/programs/func";
 import { showMessage } from "./CusToast";
 import { useCookies } from "react-cookie";
-import { categoryMap } from "../../app/data/branding";
+import { brandName, categoryMap } from "../../app/data/branding";
 
 function AddPrograms({ close, edit ,fetchPrograms,root}: { close: any; edit: any,fetchPrograms:any,root:any }) {
   const router = useRouter();
-  const [cookies, setCookie, removeCookie] = useCookies(["access"]);
+  const [cookies, setCookie, removeCookie] = useCookies([`${brandName}-access`]);
   const [loading, setLoading] = useState(false);
 
   const categories = Object.keys(categoryMap);
@@ -22,7 +22,7 @@ function AddPrograms({ close, edit ,fetchPrograms,root}: { close: any; edit: any
     limit: Yup.string().required("Participants Limit Required"),
     category: Yup.string().required("category Required"),
   });
-  console.log(cookies.access.jamiaNo);
+  console.log(cookies[`${brandName}-access`].jamiaNo);
   
   const formik = useFormik({
     initialValues: {
@@ -32,7 +32,7 @@ function AddPrograms({ close, edit ,fetchPrograms,root}: { close: any; edit: any
       limit: "",
       members:"",
       category: "",
-      team:cookies?.access?.teamId,
+      team:cookies[`${brandName}-access`]?.teamId,
     },
 
     onSubmit: async (values: any) => {
@@ -77,7 +77,7 @@ function AddPrograms({ close, edit ,fetchPrograms,root}: { close: any; edit: any
         limit: edit.limit,
         members:edit.members,
         category: edit.category,
-        campus:cookies?.access?.jamiaNo
+        campus:cookies[`${brandName}-access`]?.jamiaNo
       });
     }
   }, [edit]);

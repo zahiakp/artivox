@@ -2,15 +2,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 import { FaDownload } from "react-icons/fa6";
+import { brandName } from "../../app/data/branding";
 function PrintPrograms({ data }:{data:any}) {
   const programRef = useRef(null);
   const { students, programList, programs, campuses } = data;
-  const [cookies] = useCookies(["access"]);
+  const [cookies] = useCookies([`${brandName}-access`]);
   const [campusName, setCampusName] = useState();
   const [campusId,setCampusId]=useState()
   useEffect(() => {
-    setCampusName(cookies?.access?.name || null);
-    setCampusId(cookies?.access?.jamiaNo || null)
+    setCampusName(cookies[`${brandName}-access`]?.name || null);
+    setCampusId(cookies[`${brandName}-access`]?.jamiaNo || null)
   }, []);
   const handleExportToPDF = async () => {
     const input:any = programRef.current;

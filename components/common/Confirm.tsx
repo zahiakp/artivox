@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { UpdateProgramStatus } from "../../app/programs/func";
 import { useCookies } from "react-cookie";
 import { useState } from "react";
+import { brandName } from "../../app/data/branding";
 
 function Confirm({
   close,
@@ -14,8 +15,8 @@ function Confirm({
   program: any;fetch:any
 }) {
   const router = useRouter();
-  const [cookies] = useCookies(["access"]);
-const [userRole, setUserRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+const [userRole, setUserRole] = useState(cookies[`${brandName}-access`]?.role);
   const proEndpoint = (userRole === "admin" || userRole === "campus"||userRole==='report'||userRole==='announce') ? "programs" : (userRole === "zoneAdmin" || userRole === "zonecampus") ? "zoneprograms" :(userRole === "campusAdmin" || userRole === "Group") ? "campusprograms" : "";
   return (
     <dialog id="my_modal_1" className="modal modal-open">

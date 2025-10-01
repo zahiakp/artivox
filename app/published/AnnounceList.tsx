@@ -29,12 +29,13 @@ import { generatePDF } from "./GenaratePdf";
 import IconDownload2 from "../../components/icon/icon-download2";
 import { CiMenuKebab } from "react-icons/ci";
 import { ProResult } from "../judgement/func";
+import { brandName } from "../data/branding";
 
 function AnnounceList() {
   // const [data, setData] = useState([]);
   const [participants, setParticipants] = useState();
-  const [cookies] = useCookies(["access"]);
-  const [role, setRole] = useState(cookies?.access?.role);
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const [role, setRole] = useState(cookies[`${brandName}-access`]?.role);
   const [drop, setDrop] = useState<any>();
   const [confirm, setConfirm] = useState<any>();
   const [loading, setLoading] = useState(false);
@@ -76,7 +77,7 @@ function AnnounceList() {
 
   // ------------------pagination-------------
 
-  const [userRole, setUserRole] = useState(cookies?.access?.role);
+  const [userRole, setUserRole] = useState(cookies[`${brandName}-access`]?.role);
   const [totalRecords, setTotalRecords] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const [rows, setRows] = useState<number>(18);
@@ -94,7 +95,7 @@ function AnnounceList() {
               }).toString();
           
               try {
-                  const role = cookies?.access?.role;
+                  const role = cookies[`${brandName}-access`]?.role;
                   const endpoint = (role === "admin" || role === "announce") ? "programs" : (role === "zoneAdmin" || role === "zonecampus") ? "zoneprograms" :(role === "campusAdmin" || role === "Group") ? "campusprograms" : "";
           
                   let Programs;

@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { addStudent, CheckJamiaIds, editStudent } from "../../app/students/func";
 import { showMessage } from "./CusToast";
-import { categoryMap } from "../../app/data/branding";
+import { brandName, categoryMap } from "../../app/data/branding";
 
 function AddStudent({
   close,
@@ -26,18 +26,18 @@ function AddStudent({
   const [category, setCategory] = useState(
     adminEdit?.category || edit?.category || ""
   );
-  const [cookies] = useCookies(["access"]);
-  const {campus,groupId,campusId,role} = cookies.access;
+  const [cookies] = useCookies([`${brandName}-access`]);
+  const {campus,groupId,campusId,role} = cookies[`${brandName}-access`];
   const [loading, setLoading] = useState(false);
   const categories = adminEdit
     ? adminEdit.categories
-    : cookies.access?.categories;
+    : cookies[`${brandName}-access`]?.categories;
     const validationSchema = Yup.object().shape({
     name: Yup.string().required("Program Name Required"),
     jamiaNo: Yup.string().required("jamiaNo Required"),
     category: Yup.string().required("category Required"),
   });
-console.log(cookies.access);
+console.log(cookies[`${brandName}-access`]);
 
 const statusOptions = Object.keys(categoryMap).map((key) => ({ value: key, label: categoryMap[key] }));
 
