@@ -4,6 +4,7 @@ import { qr } from "../utils/qr";
 import { useCookies } from "react-cookie";
 import html2canvas from "html2canvas";
 import Card from "../../components/common/Card";
+import { brandName } from "../data/branding";
 
 function page() {
   const [cookies] = useCookies();
@@ -11,8 +12,8 @@ function page() {
   const [categories, setCategories] = useState();
   const [cardData,setCardData]=useState<any>()
   useEffect(() => {
-    setCampus(cookies?.access?.name || "");
-    setCategories(cookies?.access?.categories || []);
+    setCampus(cookies[`${brandName}-access`]?.name || "");
+    setCategories(cookies[`${brandName}-access`]?.categories || []);
   }, []);
   const formRef:any = useRef(null);
   function handleSubmit(e:any) {

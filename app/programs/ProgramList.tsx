@@ -163,7 +163,7 @@ const statusOptions = [allProgramsOption, ...categoryOptions];
         return await getProgramswithPagination(query);
 
       case "campus":
-        const categoryIds = cookies.access.categories.map((cat: any) => cat.id);
+        const categoryIds = cookies[`${brandName}-access`].categories.map((cat: any) => cat.id);
         return await getProgramsbyCategorywithTeamId(
           categoryIds,
           campus,
