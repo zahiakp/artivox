@@ -86,9 +86,9 @@ function AssignForm({
   fetchPrograms: any;
 }) {
   const [cookies] = useCookies([`${brandName}-access`, `${assign.category}`]);
-  const { role } = cookies.access;
+  const { role } = cookies[`${brandName}-access`];
   const router = useRouter();
-  const campus = cookies.access?.campusId;
+  const campus = cookies[`${brandName}-access`]?.campusId;
 
   const [students, setStudents] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -162,7 +162,7 @@ function AssignForm({
     initialValues: {
       participants: getInitialParticipants(assign, reassign),
       program: assign.id,
-      campus: cookies.access?.username
+      campus: cookies[`${brandName}-access`]?.username
     },
     onSubmit: async (values: any) => {
       setSubmitLoading(true);
