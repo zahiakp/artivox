@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { DocHeader, DocHeaderSec } from "../../app/data/branding";
+import { DocHeader, DocHeaderSec, rgb } from "../../app/data/branding";
 
 export const generatePDF = (
   participants: any[],
@@ -15,8 +15,8 @@ export const generatePDF = (
   const pageHeight = doc.internal.pageSize.height;
   const pageWidth = doc.internal.pageSize.width;
 
-  const templateBackground = DocHeader || "";   // first page
-  const backgroundFrom2 = DocHeaderSec || "";    // second+ pages
+  const templateBackground = DocHeader || "/20250926_100022.png";   // first page
+  const backgroundFrom2 = DocHeaderSec || "/20250926_100022-2.png";    // second+ pages
 
   const addTemplateAsBackground = (pageNum: number) => {
     const bg = pageNum === 1 ? templateBackground : backgroundFrom2;
@@ -66,7 +66,7 @@ export const generatePDF = (
     margin: { bottom: footerGap },
     theme: "grid",
     styles: { fontSize: 11, cellPadding: 3.5 },
-    headStyles: { fillColor: [33, 122, 74] },
+    headStyles: { fillColor: rgb },
     columnStyles: {
       1: { fontStyle: "bold" },
       4: { fontStyle: "bold" },
