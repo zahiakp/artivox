@@ -7,6 +7,6 @@ export const categoryMap: Record<string, string> = {
   general: "General",
 };
 export const DocHeader = "/20250926_100022.png"
-export const DocHeaderSec = "20250926_100022-2.png"
+export const DocHeaderSec = "/20250926_100022-2.png"
 export const hexColor = "#7C3AED"
-
+export const rgb = [183, 28, 28]

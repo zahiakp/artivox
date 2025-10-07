@@ -248,6 +248,7 @@ const statusOptions = [allProgramsOption, ...categoryOptions];
       );
       if (participant) {
         console.log("participant",participant);
+        console.log("program",program);
         
         const pdfBlob = generatePDF(
           participant?.data,
