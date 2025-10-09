@@ -14,6 +14,7 @@ import FooterSide from "./TopHeader";
 import Image from "next/image";
 import { TbLogout } from "react-icons/tb";
 import { brandLogo, brandName } from "../../app/data/branding";
+import IconSettings from "../icon/icon-settings";
 
 const SideMenu = () => {
   const pathname = usePathname();
@@ -101,6 +102,12 @@ const SideMenu = () => {
       adminOnly: true,
       awardOnly: true,
       resultOnly: true,
+    },
+    {
+      path: "/config",
+      label: "Config",
+      icon: <IconSettings />,
+      adminOnly: true,
     },
   ];
 

@@ -100,8 +100,8 @@ export async function getProgramswithPagination(quary:any) {
       return null;
     }
   }
-  export async function getProgramsbyStatusandPagination(status:any,quary:any,root:any) {
-    const URL: string = `${ROOT_URL}${root}/action.php?status=${status}&action=pagination&${quary}`;
+  export async function getProgramsbyStatusandPagination(status:any,quary:any,root?:any) {
+    const URL: string = `${ROOT_URL}programs/action.php?status=${status}&action=pagination&${quary}`;
     
     try {
       const response = await axios.get(URL);

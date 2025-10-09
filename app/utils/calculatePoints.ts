@@ -1,10 +1,7 @@
 import { AssignResult } from "../judgement/func";
 
-// --- Type Definitions ---
+const SPECIAL_PROGRAM_IDS = ['99', '101'];
 
-/**
- * Defines the structure for a participant object.
- */
 interface Participant {
     code: string;
     student: string;
@@ -49,57 +46,40 @@ const calculateGrade = (mark: number): string | null => {
 };
 
 /**
- * Gets the points awarded for a given rank based on program type.
+ * [MODIFIED] Gets the points awarded for a given rank.
+ * This function no longer distinguishes between group and individual programs.
  */
-const getRankPoints = (rank: number, program: Program): number => {
-    if (program.isGroup === 0) { // Individual
-        switch (rank) {
-            case 1: return 3;
-            case 2: return 2;
-            case 3: return 1;
-            default: return 0;
-        }
+const getRankPoints = (rank: number): number => {
+    switch (rank) {
+        case 1: return 5;
+        case 2: return 3;
+        case 3: return 1;
+        default: return 0;
     }
-
-    // Group (using the correct 'members_count' property)
-    const {members} = program;
-    let points = 0;
-    switch (members) {
-        case 1:
-            if (rank === 1) points = 3;
-            if (rank === 2) points = 2;
-            if (rank === 3) points = 1;
-            break;
-        case 2:
-            if (rank === 1) points = 5;
-            if (rank === 2) points = 3;
-            if (rank === 3) points = 2;
-            break;
-        case 3:
-        case 4:
-            if (rank === 1) points = 10;
-            if (rank === 2) points = 6;
-            if (rank === 3) points = 4;
-            break;
-        case 5:
-            if (rank === 1) points = 15;
-            if (rank === 2) points = 10;
-            if (rank === 3) points = 5;
-            break;
-        default:
-            points = 0;
-    }
-    return points;
 };
 
 /**
- * Gets the points awarded for a given grade.
+ * [MODIFIED] Gets the points awarded for a given grade based on program type.
+ * Handles special programs, group programs, and individual programs.
  */
 const getGradePoints = (grade: string | null, program: Program): number => {
     if (!grade) return 0;
-    const individualPoints: Record<string, number> = { "A+": 7, "A": 5, "B": 3, "C": 1 };
-    const groupPoints: Record<string, number> = { "A+": 10, "A": 7, "B": 5, "C": 3 };
-    const pointsMap = program.isGroup === 0 ? individualPoints : groupPoints;
+
+    // Point maps based on the new criteria
+    const specialPoints: Record<string, number> = { "A+": 35, "A": 30, "B": 20, "C": 10 };
+    const groupPoints: Record<string, number> = { "A+": 18, "A": 15, "B": 13, "C": 11 };
+    const individualPoints: Record<string, number> = { "A+": 8, "A": 5, "B": 3, "C": 1 };
+
+    // Determine which point map to use
+    let pointsMap: Record<string, number>;
+    if (SPECIAL_PROGRAM_IDS.includes(program.id)) {
+        pointsMap = specialPoints;
+    } else if (program.isGroup === 1) {
+        pointsMap = groupPoints;
+    } else {
+        pointsMap = individualPoints;
+    }
+
     return pointsMap[grade] || 0;
 };
 
@@ -107,8 +87,8 @@ const getGradePoints = (grade: string | null, program: Program): number => {
 // --- Core Logic ---
 
 /**
- * [MODIFIED] Assigns ranks and calculates total points for participants.
- * Rank is now determined by a 'finalMark' percentage, which is calculated based on
+ * Assigns ranks and calculates total points for participants.
+ * Rank is determined by a 'finalMark' percentage, which is calculated based on
  * the most comprehensive set of marks available across all participants.
  */
 const assignRanksAndCalculatePoints = (args: { participants: Participant[], program: Program }): Participant[] => {
@@ -141,13 +121,13 @@ const assignRanksAndCalculatePoints = (args: { participants: Participant[], prog
     let lastMark = -1;
     let lastRank = 0;
 
-    sortedParticipants.forEach((participant) => {
+    sortedParticipants.forEach((participant, index) => {
         // Assign rank, handling ties based on the finalMark
-        const rank = participant.finalMark === lastMark ? lastRank : lastRank + 1;
+        const rank = participant.finalMark === lastMark ? lastRank : index + 1;
 
         // Calculate grade and points using the finalMark
         const grade = calculateGrade(participant.finalMark);
-        const rankPoints = getRankPoints(rank, program);
+        const rankPoints = getRankPoints(rank); // No longer needs program
         const gradePoints = getGradePoints(grade, program);
         const totalPoints = rankPoints + gradePoints;
 
@@ -191,8 +171,8 @@ export const generateFinalResults = async (args: GenerateResultsArgs): Promise<b
     for (const participant of gradedParticipants) {
         const { student, code, rank, grade, points } = participant;
 
-        // [MODIFIED] Split student string to correctly handle group participants
-        const studentIds = [student.split(',').map(s => s.trim()).find(Boolean)].filter(Boolean);
+        // Split student string to correctly handle group participants
+        const studentIds = student.split(',').map(s => s.trim()).filter(Boolean);
 
         // Save the result for each student in the group
         for (const studentId of studentIds) {
