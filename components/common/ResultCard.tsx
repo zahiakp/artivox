@@ -38,7 +38,7 @@ function ResultCard({ close, data}: { close: any; data: any}) {
                           {result.map((item:any,i:number)=>(
                           <tr key={i} className={`text-[15px] py-2 ${!["1", "2", "3"].includes(item.rank) && "bg-gray-100"}`}>
                                   <th className={``}>
-                                    <div className={`rounded-full p-2 text-white flex items-center justify-center h-7 w-7 ${item.rank == "1"? "bg-yellow-600":item.rank=="2"?"bg-gray-600":item.rank=="3"?"bg-primary-600":""}`}>
+                                    <div className={`rounded-full p-2 text-white flex items-center justify-center h-7 w-7 ${item.rank == "1"? "bg-yellow-600":item.rank=="2"?"bg-gray-600":item.rank=="3"?"bg-orange-600":""}`}>
                                                                     
                                                                 {["1", "2", "3"].includes(item.rank)&&item.rank}</div>
                                     </th>

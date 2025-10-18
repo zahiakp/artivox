@@ -41,7 +41,7 @@ const getRankStyles = (rank: number) => {
     const styles: { [key: number]: { row: string; text: string; icon: string } } = {
         1: { row: "bg-yellow-50", text: "text-yellow-700", icon: "bg-yellow-600" },
         2: { row: "bg-gray-50", text: "text-gray-700", icon: "bg-gray-600" },
-        3: { row: "bg-primary-50", text: "text-primary-700", icon: "bg-primary-600" },
+        3: { row: "bg-orange-50", text: "text-orange-700", icon: "bg-orange-600" },
     };
     return styles[rank] || { row: "", text: "text-zinc-600", icon: "bg-primary-400 text-primary-700" };
 };
