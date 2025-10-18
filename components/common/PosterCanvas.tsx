@@ -83,7 +83,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
       return (
         <>
           <div className="absolute top-[45px] left-[125px]">
-            <h6 className="text-[18px] font-bold leading-[10px] mb-5 mt-7 w-20 text-blue-200">
+            <h6 className="text-[18px] font-bold leading-[10px] mb-5 mt-7 w-24 text-blue-200">
               <p className="text-[9px] font-normal text-blue-200">
                 {categoryMap[program.category.toString()]}
               </p>
@@ -91,8 +91,8 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
                 {program.name}
               </span>
             </h6>
-            <p className="font-bebasNeue text-6xl translate-y-[25px] translate-x-[14px] w-16 text-center text-blue-600">{program.order || ""}</p>
           </div>
+            <p className="absolute top-[150px] left-[140px] font-bebasNeue text-6xl w-16 text-center text-blue-600">{program.order || ""}</p>
           <div className="ml-[35px] absolute  top-[75px] left-[210px] mt-[45px] gap-[6px] flex flex-col">
             {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
                 <div key={pro.rank} className="flex items-center gap-2 w-50">
