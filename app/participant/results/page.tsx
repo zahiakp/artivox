@@ -6,8 +6,8 @@ import { MdListAlt, MdSearch } from 'react-icons/md';
 import { getProgramswithPagination } from '../../programs/func';
 import ResultCard from '../[id]/ResultCard';
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
+import { categoryMap } from '../../data/branding';
 
-const categories = ['All', 'hizone', 'dzone', 'pzone', 'general'];
 
 export default function ResultPage() {
   // --- State Management ---
@@ -91,6 +91,13 @@ const [totalRecords, setTotalRecords] = useState<number>(0);
     fetchPrograms(); // Manually trigger the API call
   };
 
+  const categories = Object.keys(categoryMap);
+const options = [{ value: "All", label: "All" }, ...categories.map((cls: any) => ({
+  value: cls,
+  label: cls
+}))];
+
+
   return (
     <div className="min-h-screen bg-gray-50">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -128,9 +135,9 @@ const [totalRecords, setTotalRecords] = useState<number>(0);
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
             >
-              {categories.map(category => (
-                <option key={category} value={category}>
-                  {category}
+              {options.map((category:any,i:number) => (
+                <option key={i} value={category.value}>
+                  {category.label}
                 </option>
               ))}
             </select>
