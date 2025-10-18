@@ -5,7 +5,7 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import PageLoader from "../components/common/Loader";
-import { Sora } from "next/font/google";
+import { Bebas_Neue, Sora } from "next/font/google";
 import { brandName } from "./data/branding";
 
 export const metadata = {
@@ -18,11 +18,18 @@ const sora = Sora({
   subsets: ["latin"],
 });
 
+const bebasNeue = Bebas_Neue(
+  {
+    variable: "--font-bebas-neue",
+    weight: "400",
+    subsets: ["latin"],
+  });
+
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en">
       <head></head>
-      <body className={`${sora.className} antialiased`}>
+      <body className={`${sora.className} ${bebasNeue.variable} antialiased`}>
         <ToastContainer />
         <PageLoader />
         {children}

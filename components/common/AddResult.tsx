@@ -105,7 +105,7 @@ if(!participants || participants.length == 0){
         </h6>
 
         <div className="gap-3 mx-auto overflow-auto grid grid-cols-1">
-          {participants.map((student: any, index: number) => (
+          {participants.filter((item:any)=>item.status != "cancelled").map((student: any, index: number) => (
             <div
               key={student.code}
               className="flex gap-3 items-center bg-zinc-100 p-2 rounded-xl"

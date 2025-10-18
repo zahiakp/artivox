@@ -94,27 +94,29 @@ const getGradePoints = (grade: string | null, program: Program): number => {
 const assignRanksAndCalculatePoints = (args: { participants: Participant[], program: Program }): Participant[] => {
     const { participants, program } = args;
 
-    // 1. Determine the fairest maximum score by checking if any participant has mark2 or mark3
-    const useMark3 = participants.some(p => p.mark3 != null && p.mark3 > 0);
-    const useMark2 = !useMark3 && participants.some(p => p.mark2 != null && p.mark2 > 0);
+    // 1. [REMOVED] No longer need global maxMark calculation here.
 
-    let maxMark = 100;
-    if (useMark3) maxMark = 300;
-    else if (useMark2) maxMark = 200;
-
-    // 2. Calculate a final mark percentage for each participant using the determined maxMark
+    // 2. Calculate a final mark percentage for each participant individually
     const participantsWithFinalMark = participants.map(p => {
+        
         let totalScore = p.mark || 0;
-        if (useMark3) {
+        let maxMark = 100; // Default to 100
+
+        // Check THIS participant's marks to determine THEIR maxMark
+        if (p.mark3 != null && p.mark3 > 0) {
             totalScore += (p.mark2 || 0) + (p.mark3 || 0);
-        } else if (useMark2) {
+            maxMark = 300;
+        } else if (p.mark2 != null && p.mark2 > 0) {
             totalScore += (p.mark2 || 0);
+            maxMark = 200;
         }
+
         const finalMark = (totalScore / maxMark) * 100;
         return { ...p, finalMark };
     });
 
     // 3. Sort participants by the calculated finalMark in descending order
+    // (The rest of the function is the same as before)
     const sortedParticipants = [...participantsWithFinalMark].sort((a, b) => b.finalMark - a.finalMark);
 
     const rankedParticipants: Participant[] = [];
@@ -122,16 +124,12 @@ const assignRanksAndCalculatePoints = (args: { participants: Participant[], prog
     let lastRank = 0;
 
     sortedParticipants.forEach((participant, index) => {
-        // Assign rank, handling ties based on the finalMark
         const rank = participant.finalMark === lastMark ? lastRank : index + 1;
-
-        // Calculate grade and points using the finalMark
         const grade = calculateGrade(participant.finalMark);
-        const rankPoints = getRankPoints(rank); // No longer needs program
+        const rankPoints = getRankPoints(rank);
         const gradePoints = getGradePoints(grade, program);
         const totalPoints = rankPoints + gradePoints;
 
-        // Destructure to remove the temporary 'finalMark' before returning
         const { finalMark, ...originalParticipant } = participant;
 
         rankedParticipants.push({
@@ -148,12 +146,6 @@ const assignRanksAndCalculatePoints = (args: { participants: Participant[], prog
     return rankedParticipants;
 };
 
-
-// --- Main Exported Function ---
-
-/**
- * Main function to process participants, generate final results, and save them.
- */
 export const generateFinalResults = async (args: GenerateResultsArgs): Promise<boolean> => {
     const { participants, program } = args;
 
@@ -171,11 +163,28 @@ export const generateFinalResults = async (args: GenerateResultsArgs): Promise<b
     for (const participant of gradedParticipants) {
         const { student, code, rank, grade, points } = participant;
 
-        // Split student string to correctly handle group participants
-        const studentIds = student.split(',').map(s => s.trim()).filter(Boolean);
+        // 1. Always split the student string by comma to get all IDs
+        const allStudentIds = student.split(',').map(s => s.trim()).filter(Boolean);
 
-        // Save the result for each student in the group
-        for (const studentId of studentIds) {
+        // If there are no IDs, skip this record
+        if (allStudentIds.length === 0) {
+            console.warn(`Skipping participant with empty student field for code ${code}`);
+            continue;
+        }
+
+        let studentIdsToSave: string[];
+
+        // 2. [CORRECTED LOGIC] Decide *which* IDs to save
+        if (program.isGroup === 1) {
+            // For a group, take ONLY the first ID from the list
+            studentIdsToSave = [allStudentIds[0]];
+        } else {
+            // For an individual program, save all IDs found (usually just one)
+            studentIdsToSave = allStudentIds;
+        }
+
+        // 3. Loop through the one (for group) or all (for individual) IDs
+        for (const studentId of studentIdsToSave) {
             try {
                 console.log(`Saving result for: ${studentId}, Rank: ${rank}, Grade: ${grade}, Points: ${points}`);
                 const saveResult = await AssignResult(

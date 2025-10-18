@@ -18,12 +18,12 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
   const temp: any = [
     {
       frame: "1",
-      data: [{ theme: "dark", image: "/results/cog rslt 1.jpg" }],
+      data: [{ theme: "dark", image: "/results/res1-ref.png" }],
     },
-    {
-      frame: "2",
-      data: [{ theme: "dark", image: "/results/cog rslt 2.jpg" }],
-    }
+    // {
+    //   frame: "2",
+    //   data: [{ theme: "dark", image: "/results/cog rslt 2.jpg" }],
+    // }
   ];
 
   function getNextFrame(currentFrame: any, frames: any[]) {
