@@ -18,7 +18,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
   const temp: any = [
     {
       frame: "1",
-      data: [{ theme: "dark", image: "/results/res1-ref.png" }],
+      data: [{ theme: "dark", image: "/results/res-1.png" }],
     },
     // {
     //   frame: "2",
@@ -82,27 +82,28 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
     if (frame.frame === "1") {
       return (
         <>
-          <div className="absolute top-[165px] left-[75px]">
-            <h6 className="text-[18px] font-bold leading-[14px] mb-5 mt-7 w-40 text-white">
-              <p className="text-[8px] font-normal font-Fractul text-white">
+          <div className="absolute top-[45px] left-[125px]">
+            <h6 className="text-[18px] font-bold leading-[10px] mb-5 mt-7 w-20 text-blue-200">
+              <p className="text-[9px] font-normal text-blue-200">
                 {categoryMap[program.category.toString()]}
               </p>
-              <span className="font-Jazri-line text-[20px] bg-gradient-to-r from-primary-400 to-yellow-500 bg-clip-text text-transparent font-normal uppercase">
+              <span className="text-[10px] text-white font-normal uppercase">
                 {program.name}
               </span>
             </h6>
+            <p className="font-bebasNeue text-6xl translate-y-[25px] translate-x-[14px] w-16 text-center text-blue-600">{program.order || ""}</p>
           </div>
-          <div className="ml-[35px] absolute top-[190px] left-[40px] mt-[45px] gap-[1px] flex flex-col">
+          <div className="ml-[35px] absolute  top-[75px] left-[210px] mt-[45px] gap-[6px] flex flex-col">
             {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
                 <div key={pro.rank} className="flex items-center gap-2 w-50">
-                  <p className={`font-Jazri-line text-2xl bg-red-500/50 w-5 tracking-tighter font-light bg-gradient-to-r opacity-70 from-primary-400 to-yellow-500 bg-clip-text text-transparent`}>
+                  {/* <p className={`font-Jazri-line text-2xl bg-red-500/50 w-5 tracking-tighter font-light bg-gradient-to-r opacity-70 from-primary-400 to-yellow-500 bg-clip-text text-transparent`}>
                     0{pro.rank}
-                    </p>
+                    </p> */}
                      <div className={`${image?.theme === "dark" ? "text-white" : ""} translate-y-[1px]`}>
-                    <h6 className="text-[15px] font-Jazri-light w-50 leading-[16px]">
+                    <h6 className="text-[15px] font-bebasNeue w-50 leading-[16px]">
                       {pro.student.toUpperCase()}
                     </h6>
-                    <p className="text-[8px] font-Fractul w-50 -mt-1 leading-[13px]">
+                    <p className="text-[8px] w-50 -mt-1 leading-[13px]">
                       {pro.campus}
                     </p>
                   </div>
@@ -113,39 +114,39 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
       );
     }
 
-    if (frame.frame === "2") {
-      return (
-        <>
-          <div className="absolute top-[175px] left-[205px]">
-            <h6 className="text-[18px] font-bold leading-[14px] mb-5 mt-7 w-40 text-white">
-              <p className="text-[8px] font-normal font-Fractul text-white">
-                {categoryMap[program.category.toString()]}
-              </p>
-              <span className="font-Jazri-line text-[20px] bg-gradient-to-r from-primary-400 to-yellow-500 bg-clip-text text-transparent font-normal uppercase">
-                {program.name}
-              </span>
-            </h6>
-          </div>
-          <div className="ml-[35px] absolute top-[205px] left-[170px] mt-[45px] gap-[1px] flex flex-col">
-            {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
-                <div key={pro.rank} className="flex items-center gap-2 w-50">
-                  <p className={`font-Jazri-line text-2xl bg-red-500/50 w-5 tracking-tighter font-light bg-gradient-to-r opacity-70 from-primary-400 to-yellow-500 bg-clip-text text-transparent`}>
-                    0{pro.rank}
-                    </p>
-                     <div className={`${image?.theme === "dark" ? "text-white" : ""} translate-y-[1px]`}>
-                    <h6 className="text-[15px] font-Jazri-light w-50 leading-[16px]">
-                      {pro.student.toUpperCase()}
-                    </h6>
-                    <p className="text-[8px] font-Fractul w-50 -mt-1 leading-[13px]">
-                      {pro.campus}
-                    </p>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </>
-      );
-    }
+    // if (frame.frame === "2") {
+    //   return (
+    //     <>
+    //       <div className="absolute top-[175px] left-[205px]">
+    //         <h6 className="text-[18px] font-bold leading-[14px] mb-5 mt-7 w-40 text-white">
+    //           <p className="text-[8px] font-normal font-Fractul text-white">
+    //             {categoryMap[program.category.toString()]}
+    //           </p>
+    //           <span className="font-Jazri-line text-[20px] bg-gradient-to-r from-primary-400 to-yellow-500 bg-clip-text text-transparent font-normal uppercase">
+    //             {program.name}
+    //           </span>
+    //         </h6>
+    //       </div>
+    //       <div className="ml-[35px] absolute top-[205px] left-[170px] mt-[45px] gap-[1px] flex flex-col">
+    //         {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
+    //             <div key={pro.rank} className="flex items-center gap-2 w-50">
+    //               <p className={`font-Jazri-line text-2xl bg-red-500/50 w-5 tracking-tighter font-light bg-gradient-to-r opacity-70 from-primary-400 to-yellow-500 bg-clip-text text-transparent`}>
+    //                 0{pro.rank}
+    //                 </p>
+    //                  <div className={`${image?.theme === "dark" ? "text-white" : ""} translate-y-[1px]`}>
+    //                 <h6 className="text-[15px] font-Jazri-light w-50 leading-[16px]">
+    //                   {pro.student.toUpperCase()}
+    //                 </h6>
+    //                 <p className="text-[8px] font-Fractul w-50 -mt-1 leading-[13px]">
+    //                   {pro.campus}
+    //                 </p>
+    //               </div>
+    //             </div>
+    //           ))}
+    //       </div>
+    //     </>
+    //   );
+    // }
     return null;
   };
 
