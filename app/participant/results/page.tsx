@@ -92,9 +92,11 @@ const [totalRecords, setTotalRecords] = useState<number>(0);
   };
 
   const categories = Object.keys(categoryMap);
-const options = categories.map((cls:any) => {
-  return { value: cls, label:cls };
-});
+const options = [{ value: "All", label: "All" }, ...categories.map((cls: any) => ({
+  value: cls,
+  label: cls
+}))];
+
 
   return (
     <div className="min-h-screen bg-gray-50">
