@@ -4,6 +4,7 @@ import '../globals.css'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { TbSmartHome } from 'react-icons/tb'
 import FooterNav from './FooterNav'
+import { brandName } from '../data/branding'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,7 @@ export default function RootLayout({
               <div className="flex justify-center items-center h-16">
                 {/* Logo and Title */}
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className="text-xl font-bold text-gray-900">COGNIZIUM</h1>
+                    <h1 className="text-xl font-bold text-gray-900">{brandName}</h1>
                     <p className="text-sm text-gray-500">Student Panel</p>
                   
                 </div>
