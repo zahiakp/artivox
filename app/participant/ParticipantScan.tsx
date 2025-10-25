@@ -18,7 +18,7 @@ export default function ParticipantsScanner() {
     const decodedId = decodeId(text);
     console.log(decodedId);
     
-    if (/^COG\d{3}$/.test(decodedId)) {
+    if (decodedId) {
       setError('');
       setScanSuccess(true);
       setLastScannedId(decodedId);
