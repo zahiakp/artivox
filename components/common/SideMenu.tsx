@@ -23,7 +23,7 @@ const SideMenu = () => {
   const [role, setRole] = useState();
 
   useEffect(() => {
-    setRole(cookies[`${brandName}-access`].role);
+    setRole(cookies[`${brandName}-access`]?.role);
   }, []);
 
   const menuItems = [
