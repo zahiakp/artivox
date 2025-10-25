@@ -1,4 +1,4 @@
-export const brandName = "Artivox"
+export const brandName = "Artivox B"
 export const brandLogo = "/logo.png"
 export const categoryMap: Record<string, string> = {
   hss : "HSS",
