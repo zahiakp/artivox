@@ -91,7 +91,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
               <p className="text-[12px] font-normal mb-1">
                 BOYS
               </p>
-              <span className="text-3xl text-white leading-7 font-bebasNeue font-normal uppercase">
+              <span className="text-2xl text-white leading-6 barlow-condensed font-normal uppercase">
                 {program.name}
               </span>
             </h6>
@@ -100,7 +100,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
           <div className="ml-[35px] absolute  top-[180px] left-[30px] mt-[45px] gap-[6px] flex flex-col">
             {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
                 <div key={pro.rank} className="flex items-center gap-2 w-50">
-                  <p className={` text-2xl text-yellow-500 tracking-tighter font-bebasNeue`}>
+                  <p className={` text-2xl text-yellow-500 tracking-tighter barlow-condensed`}>
                     0{pro.rank}
                     </p>
                      <div className={`${image?.theme === "dark" ? "text-white" : ""} translate-y-[1px]`}>
@@ -127,7 +127,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
               <p className="text-[12px] font-normal mb-1">
                 BOYS
               </p>
-              <span className="text-3xl text-white leading-7 font-bebasNeue font-normal uppercase">
+              <span className="text-2xl text-white leading-6 barlow-condensed font-normal uppercase">
                 {program.name}
               </span>
             </h6>
@@ -136,7 +136,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
           <div className="ml-[35px] absolute  top-[180px] left-[170px] mt-[45px] gap-[6px] flex flex-col">
             {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
                 <div key={pro.rank} className="flex items-center gap-2 w-50">
-                  <p className={` text-2xl text-yellow-500 tracking-tighter font-bebasNeue`}>
+                  <p className={` text-2xl text-yellow-500 tracking-tighter barlow-condensed`}>
                     0{pro.rank}
                     </p>
                      <div className={`${image?.theme === "dark" ? "text-white" : ""} translate-y-[1px]`}>
@@ -158,11 +158,11 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
       return (
         <>
           <div className="absolute top-[230px] left-[60px]">
-            <h6 className="text-[18px] font-bold leading-[10px] mb-5 mt-7 w-40  text-red-600">
+            <h6 className="text-[18px] font-bold leading-[10px] mb-5 mt-7 w-36 text-red-600">
               <p className="text-[12px] font-normal mb-1">
                 BOYS
               </p>
-              <span className="text-3xl text-zinc-950 leading-7 font-bebasNeue font-normal uppercase">
+              <span className="text-2xl text-zinc-950 leading-6 barlow-condensed font-normal uppercase">
                 {program.name}
               </span>
             </h6>
@@ -171,7 +171,7 @@ function PosterCanvas({ close, data }: { close: any; data: any }) {
           <div className="ml-[35px] absolute  top-[180px] left-[180px] mt-[45px] gap-[6px] flex flex-col">
             {result.filter((rank: any) => rank.rank < 4).map((pro: any) => (
                 <div key={pro.rank} className="flex items-center gap-2 w-50">
-                  <p className={` text-2xl text-red-600 tracking-tighter font-bebasNeue`}>
+                  <p className={` text-2xl text-red-600 tracking-tighter barlow-condensed`}>
                     0{pro.rank}
                     </p>
                      <div className={`${image?.theme === "dark" ? "text-zinc-950" : ""} translate-y-[1px]`}>
