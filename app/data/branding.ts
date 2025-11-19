@@ -6,4 +6,4 @@ export const categoryMap: Record<string, string> = {
 export const DocHeader = "/doc.png"
 export const DocHeaderSec = "/doc2.png"  
 export const hexColor = "#2563EB"
-export const rgb = [37, 99, 235]
+export const rgb = [79,43, 91]
